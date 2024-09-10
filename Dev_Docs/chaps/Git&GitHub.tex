@@ -1,0 +1,88 @@
+\section{Git \& GitHub 协作}\label{GitGitHub}
+本节介绍Git与GitHub, 以及如何通过二者进行协同工作.
+\subsection{分布式版本控制工具: Git}
+Git是强大的分布式版本控制工具, 由Linus Torvalds与其主导的Linux开发小组在开发Linux内核时为实现方便的协同工作与版本控制而开发. 有一篇优秀的
+博客文章记录了相关的历史故事, 感兴趣可以看看:\bhref{https://blog.brachiosoft.com/posts/git/}{Git的故事}.
+
+分布式版本控制工具的名称里, 分布式指可以去中心化地将仓库存储于多个位置, 而版本控制则指通过技术手段, 记录仓库的更改变动等, 且在必要时回滚版本到旧版本的
+软件工具. Git近乎是目前世界上最流行的版本控制工具, 其功能强大, 操作简单易用, 受到许多开发者的欢迎. 本节将尝试对Git做出简单的介绍, 包括其核心思想, 基础概念
+和基本操作等. 有一篇出色的教程较为详细地介绍了Git, 可以作为参考: \bhref{https://liaoxuefeng.com/books/git/introduction/index.html}{Git教程}. 不过该教程主要介绍的是命令行操作, 相比之下易用性不如一些GUI程序. 本节将介绍
+GitHub Desktop这一软件以便进行相关操作. 值得注意的是, GitHub Desktop并不是使用Git的唯一方式, 许多软件都集成了Git的功能, 例如VS, VSCode, CLion等, 且通过
+命令行操作Git也不失为一种好的手段.
+
+\subsubsection{Git的核心思想: 记录变更}
+Git从来不复制文件, Git只负责记录仓库内发生了什么变化. 通过为每一次提交所产生的变更做出记录, 赋以一个唯一的标识码, 使用者可以轻易追溯到所有的改动历史. 并且通过
+"分支"(Branch)功能, 用户可以从某次提交记录开始新创立一个分支, 在该分支做出的变动只会记录在该分支上, 不会影响到其余分支. 当用户希望将一个分支发生的内容变更记录
+同步到另一个分支时,便可使用"合并"(Merge)功能. 总之, Git只记录由Git管理的仓库内发生过什么变化, 不会去记录文件本身. 这就是Git的核心思想, 也是Git在不涉及网络
+环境时工作效率极高的原因.
+\subsubsection{Git基础概念}
+除了上一小节所提到的Branch, Merge以外, Git中有一些专有的, 约定俗成的概念, 这里对其一并介绍:
+\begin{enumerate}
+      \item repository(仓库): 指由Git接管的文件夹. Git无法管理一个普通的文件夹, 需要将普通文件夹用Git初始化为仓库后才可以被Git所管理.
+      \item stash: 类似于中转站的存储位置. 仓库内的所有的改动并不会立刻被记录, 而是会先存储在stash中. 修改stash中的内容较为简单,
+            通过此方法可以让Git只记录用户认为准备妥当的改动, 避免提交内容混乱.
+      \item commit(提交): 在确认stash内的改动无误后, 即可提交这次的变更记录. 请注意每次的提交Git都强制要求用户为提交进行命名, 不进行命名会导致提交失败. 但
+            也请不要因此而随意起名, 具有描述性的提交命名可以帮助在回滚版本时快速大致了解每次变更, 从而快速定位问题所在.
+      \item branch(分支): 由Git控制的变更记录串, 在一个branch上做出的改动不会影响到其余的branch. 这一特性给予Git强大的协作能力, 不同的用户在共同工作时可以
+            创建一个自己的分支, 这样自己的工作不会受他人影响, 也不会影响他人.
+      \item merge(合并): 该操作会使Git尝试将一个branch上产生的变更合并到另一个branch上. 如果两个branch的变更记录没有冲突的话便可将前一branch的变更同步至
+            后一branch. 当冲突发生时, Git将会将决定权交由用户决定保留哪些变更.
+      \item push(推送): 可以将本地Git记录的仓库变更推送到远程的库中, 常见的如推送至GitHub(后文将介绍). 如此便可使Git兼顾云端协作功能.
+      \item clone(复制): 与push相对, 可以将远程仓库的内容复制下载至本地.
+      \item fetch: 可以将云端内容同步至本地.请注意fetch与clone之间的区别, \\clone对一个仓库而言一般只操作一次, 而后这个库将通过fetch获取云端的内容以同步.
+      \item pull request: 利用Git进行协作的基础即为使用pull request功能. 开发者通过克隆他人的仓库到本地, 经过修改变更后, 可以选择提交到自己的库中, 也可以
+            选择将自己的变更提交给被克隆的仓库以供该仓库的原管理员审阅. 这一操作即为pull request. 这一过程类似于代码审核过程, 由原仓库管理员选择性合并他人提交的pull
+            request以保证仓库的更新质量.
+\end{enumerate}
+\subsection{GitHub Desktop操作}
+GitHub Desktop是由GitHub组织开发的, 可以方便地与GitHub进行连接并实现push, clone, fetch与pull request等操作, 同时其也兼具Git的基本功能, 适合轻度使用者用来完成基础的
+版本控制与多人协作.
+
+首先请下载并安装GitHub Desktop, 点击\bhref{https://desktop.github.com/download/}{\underline{此处}}即可打开GitHub Desktop的官网. 安装后打开软件, 下列步骤将引导在
+本地创建一个Git仓库:
+\begin{enumerate}
+      \setcounter{enumi}{-1}
+      \item 请确保软件安装完毕.
+      \item 打开软件后于左上角{\sffamily{文件(File)}}菜单中选择{\sffamily{新建仓库(New Repository)}}或按下快捷键\cverb|Ctrl+N|. 此时弹出对话框.
+      \item 在弹出的对话框中, 为仓库起一个名字, 可选地填入描述性信息, 然后选择仓库的位置. 请注意, 这里的仓库位置是仓库文件夹所在的位置, 而不是仓库的路径.
+            比如仓库名为{\bfseries{test}}, 路径为\cverb|D:\Repositories|, 则创建的仓库文件夹的绝对路径为\cverb|D:\Repositories\test|.
+      \item 创建仓库完成后, 在仓库文件夹中做出一些改动, 如新建文件, 改变文件内容之类. 随后便可在GitHub Desktop中看到做出的改变.
+      \item 在GitHub Desktop左下角的框中写入提交信息, 包括提交名, 提交简述等, 随后点击{\sffamily{提交(Commit)}}, 即可完成一次变更提交.
+            此时在左上角标签页{\sffamily{历史(History)}}中即可看到改动的记录.
+\end{enumerate}
+以上便可创建一个Git接管的仓库并创建一次变动提交. 关于创建分支等功能此处不再赘述.
+
+\subsection{GitHub: 代码托管平台}
+即使Git的分布式特性强大且突出, 这并不妨碍开发者们希望有一个值得信赖的可以放置自己代码的地方. 经过多年的发展, GitHub成为了这个众多开发者都选择的代码托管平台.
+由于GitHub的域名"被墙", 国内网络并不能直接访问GitHub的服务器. 此处仅介绍GitHub与Git如何协作.
+
+Git的clone功能可以将仓库从一个远程地址下载到本地. 通过GitHub Desktop即可以实现该操作. 这个远程仓库可以是任意的提供相关服务的服务器, 常见的就是GitHub
+的服务器. GitHub Desktop可以选择将自己的云端的库clone至本地, 也可以选择通过输入URL(网页地址)的方式, 将自己或他人仓库的URL输入后下载到本地. 选择他人仓库时,
+GitHub Desktop可能会询问这个仓库是留作自用还是用以提交pull request, 请根据需求选择, 这会影响GitHub Desktop在push时是更新自己账户下的仓库还是向原仓库提交
+pull request.
+
+GitHub本身也有诸多功能, 且在GitHub中的开源项目众多, 是学习编程乃至其他方面的优秀选择. 此处不再赘述.
+
+\subsection{MInDes的Git(GitHub)仓库}
+此处介绍MInDes软件代码的大致构成, 以便检查您拥有的代码是否完整. 如果您使用Git从GitHub库内拉取, 则应该会直接获取到完整的内容.
+
+以下是MInDes\_DEV的{\bfseries{main}}分支中的内容.
+\begin{itemize}
+      \item {\bfseries{infile}}: 内含可供MInDes读取使用的测试输入文件与示例输入文件.
+      \item {\bfseries{lib}}: 包含所有的在程序运行或编译过程中需要使用到的静态或动态链接库.
+      \item {\bfseries{modules}}: 包含程序中各个模块的源代码.
+      \item {\bfseries{solvers}}：包含程序中求解器主体的源代码．
+      \item \emph{AUTHORS          } : 记录有软件作者信息.
+      \item \emph{COPYRIGHT        } : 记录了程序的版权页
+      \item \emph{COPYRIGHT\_HEADER} : 记录了附在源代码前的版权信息
+      \item \emph{MInDes\_EXE.cpp  } : 程序的主入口源文件.
+      \item \emph{README.md        } : 程序的自述文件.
+      \item \emph{compile\_exec.sh } : 使用G++以直接编译程序的Shell脚本.
+\end{itemize}
+以下是MInDes\_DEV的{\bfseries{develop}}分支的额外内容.
+\begin{itemize}
+      \item \emph{CMakeLists.txt           }     : CMake的配置文件, 用以CMake在Linux端构筑.
+      \item \emph{MInDes\_DEV Change Log.md}     : 手动维护的一份变更记录文件
+      \item \emph{cmake\_build.sh          }     : 使用CMake直接编译程序的Shell脚本.
+\end{itemize}
+\endinput

@@ -1,0 +1,95 @@
+
+\section{Windows平台开发}\label{WindowsPlatform}
+本节介绍Windows开发需要的基本环境搭建.
+\subsection{开发环境搭建: Microsoft Visual Studio的安装}
+Windows平台推荐使用Microsoft Visual Studio (以下称VS) 的最新社区版 (VS Community 2022) 进行开发. 下面将给出VS的安装步骤:
+
+\begin{enumerate}
+    \setcounter{enumi}{-1}
+    \item VS是一个功能齐全, 体积庞大的IDE, VS本体的下载与安装时间较长, 请耐心等待. 在安装VS前请预留好充足的空间. 安装过程中可能需要您重启计算机.
+    \item 点击\bhref{https://visualstudio.microsoft.com/}{\underline{此处}}可打开 VS 官网, 选择下方的下载即可下载VS的安装器.
+          请注意, 这一步下载的仅为VS的安装器, 并非VS的本体.
+    \item 在安装好VS的安装器后, 需要根据需要安装组件. 此处请选择安装{\sffamily{社区版(Community)}},
+          此为免费提供使用的版本. 
+    \item 在开发组件中, 选择{\sffamily{C++桌面开发(Desktop Development with C++)}}. 随后的步骤均可默认安装.
+\end{enumerate}
+通过上面的步骤, 您将在您的计算机上安装好Microsoft Visual Studio.
+
+\subsubsection{Microsoft Visual Studio的项目属性设置}
+随后我们演示如何为一个VS项目做属性设置.
+\begin{enumerate}
+    \setcounter{enumi}{-1}
+    \item 请确保正确安装了VS, 特别是VS的组件, 应包含C++桌面开发的组件.
+    \item 打开VS, 此时VS会弹出一个欢迎窗口, 左侧为历史项目(目前是空的), 右侧有若干选项. 请选择第四项{\sffamily{创建新项目(Create a new project)}}.
+    \item VS内置了多种项目模板. 但我们需要一个空项目模板, 因此在右侧选择{\sffamily{空项目(Empty Project)}}, 并点击{\sffamily{下一步}}.
+    \item 接下来VS会要求设置新项目的名称, 路径位置等. 请根据自己喜好填写, 并点击右下方{\sffamily{创建(Create)}}.
+    \item 随后便会进入VS的主界面. 现在创建一个新的C++文件. VS中的多种文件统称为{\sffamily{项(item)}}.
+          在{\sffamily{解决方案浏览器(Solution Expolorer)}}中选择{\sffamily{源文件(source)}}文件夹(过滤器)后右键,
+          在{\sffamily{添加(Add)}}子菜单中选择{\sffamily{新项(New Item...)}}, 然后再在弹出的对话框中为该文件命名. 现在该文件便会打开在主页面中, 等待编辑.
+    \item 编辑该文件使之成为一个可运行的C++代码.下面给出一个简单的C++源文件示例:
+\begin{lcverbatim}
+#include <iostream>
+int main() {
+        std::cout << "hello, world! from Visual Studio";
+}
+\end{lcverbatim}
+          您可以将上述代码复制粘贴. 编辑完成后保存.
+    \item 现在修改项目的属性, 首先修改C++的语言标准. 右键单击{\sffamily{解决方案浏览器(Solution Expolorer)}}中与您项目名称相同的一项,
+          点选{\sffamily{属性\\(Properties)}}, 此时将弹出项目属性对话框.
+    \item 在该对话框左上方的配置中选择{\sffamily{所有配置(All Configuration)}}, 在左侧栏中找到
+          配置{\sffamily{配置属性{\textrightarrow}通常(Configuration Properties{\textrightarrow}General)}}, 右侧界面中选择"C++ 语言标准",
+          更改为{\sffamily{ISO C++ 17 标准(/std:c++17) (ISO C++ 17 Standard(/std:c++17))}}.
+    \item 再在左侧栏中找到{\sffamily{配置属性{\textrightarrow}C/C++{\textrightarrow}语言\\
+          (Configuration Properties{\textrightarrow}C/C++{\textrightarrow}Language)}}选项,
+          在右侧的界面中点击{\sffamily{Open MP 支持(Open MP Support)}}一项的右侧, 选择{\sffamily{是(/openmp)\\(Yes(/openmp))}}, 为该项目添加OpenMP的支持.
+\end{enumerate}
+
+至此, 您已为在VS中为开发MInDes所需要的项目属性设置. 请注意, 这些属性设置是仅针对单个项目的, 如有别的新的项目需要类似设置,
+请按照上述类似步骤进行设置.
+
+\subsubsection{MInDes在Microsoft Visual Studio项目中的文件添加与初次运行}
+假设您现在通过GitHub等手段获得了MInDes的源代码, 现在希望创建一个新的VS项目或将之添加到一个已有的VS项目中. 以下是将MInDes源文件添加至VS以及初次运行
+MInDes的具体步骤.
+
+\begin{enumerate}
+    \setcounter{enumi}{-1}
+    \item 请确保VS已经被正常安装, 且您已知晓如何设置项目属性.
+    \item 请打开MInDes源码的文件夹放在一边, 并打开或创建一个空的项目.
+    \item 在VS中, 将解决方案浏览器中的所有过滤器(带有小漏斗的文件夹图标)删除, 并右键项目名称, 选择{\sffamily{添加{\textrightarrow}新过滤器(Add{\textrightarrow}New Filter)}},
+          此时会创建一个新的过滤器, 请将其名称命名为MInDes源码文件夹中的{\bfseries{solvers}}, 或{\bfseries{modules}}.
+    \item 以上述步骤的类似方式逐步建立多级过滤器, 名称按照源文件的文件夹中所设置的一般.
+    \item 在建立好所有过滤器后, 将对应文件夹的内容拖入对应的过滤器上, 即可完成对项目添加源文件.
+    \item 请在源文件夹中找到{\bfseries{lib}}文件夹下的三个文件: \emph{libfftw3-3.dll, libfftw3f-3.dll, libfftw3l-3.dll},
+          将之复制到项目所在的文件夹中. 这一步是为了能让程序编译时能找到这三个运行时库(动态链接库). 请注意, 不是将{\bfseries{lib}}中的文件复制到上一级
+          文件夹中, 而是复制到VS项目所在的文件夹中.
+    \item 在完成上述所有步骤后, 您就已经完成了MInDes源文件的添加. 尝试运行该程序. 运行前请勿忘记项目属性的设置, 以免出现不必要的报错.
+    \item 点击VS上方工具栏中的绿色实心箭头, 该按钮将启动代码的调试/运行. 由于程序体量较大,
+          程序的编译过程可能需要一段时间等待. 开始编译后, 您会在VS的文本编辑器下方看到新的窗口, 此时应该会显示编译过程的信息.
+          如果程序编译无误, 随后会跳出一个控制台框, 其即为正在运行的该程序, 而VS的界面也会发生变化以供用户调试程序. 若程序编译有误,
+          则刚刚显示编译过程信息的窗口将显示出现的错误. 请就报错的说明文字和错误代码进行搜索以排查错误.
+\end{enumerate}
+
+至此, MInDes在Windows端VS上的开发环境配置便完成了.
+
+\subsection{开发环境搭建: Microsoft Visual Studio Code}
+除了使用Visual Studio进行Windows端开发外, 建议使用Microsoft旗下的Visual Studio Code (以下简称VSCode)进行文件浏览,
+特别是程序输入文件的编写. 后续在Linux平台的开发也需要依赖VSCode的远程连接和WSL功能. 点击
+\bhref{https://code.visualstudio.com/}{\underline{此处}}可打开 VSCode 官网.
+
+VSCode的安装可以全部选择默认安装, 如此即可使用VSCode的基础功能. VSCode以其丰富的插件生态而闻名, 安装插件可以在侧边栏选择
+或\\\cverb|Ctrl+Shift+X|打开插件市场, 在页面上方框中输入相应关键词即可检索相关插件. 这里推荐若干插件以提高工作效率:
+\begin{itemize}
+    \item Chinese (Simplified)(简体中文) Language Pack for Visual Studio Code: 可以使VSCode的语言显示变为中文显示.
+    \item WSL: 添加链接WSL的支持以便于从VSCode中打开WSL并进行程序调试
+    \item MInDes-LSP: 笔者开发的为MInDes输入文件提供语法支持的VSCode插件. 可以从
+          \bhref{https://github.com/A-moment096/MInDes-LSP}{\underline{该Github仓库}}中下载安装. 安装方法为在插件市场
+          界面右上侧的三个点处展开菜单, 选择{\sffamily{从VSIX安装(Install from VSIX\dots)}}, 在弹出的对话框中选择下载好的VSIX文件即可.
+    \item C/C++ Extension Pack: 为C或C++语言提供语言支持, 包括语法高亮, 语法纠错, 断点调试等功能.
+    \item CMake: 提供在VSCode中使用CMakeLists.txt进行程序构筑的支持.
+\end{itemize}
+其中前三个推荐在Windows平台的VSCode中安装, 如果没有在Windows端使用VSCode调试程序的需求, 其余的可以选择只在WSL中安装即可.
+
+\subsection{结果可视化: Paraview}
+在使用MInDes进行模拟后, 会得到对应的模拟结果. MInDes选择使用\\\emph{.vts}格式存储运行结束后的相场演化图像, 该文件可以通过
+Paraview这一开源数据可视化软件打开. 点击\bhref{https://www.paraview.org/download/}{\underline{此处}}下载Paraview.
+\endinput
