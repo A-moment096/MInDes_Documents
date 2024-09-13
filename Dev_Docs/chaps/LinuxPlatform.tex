@@ -87,7 +87,7 @@
 
 出于可能的使用需求, 此处简要介绍Linux自带的编辑器Vim, 即便开发过程中多数时间推荐使用的为微软出品的VSCode.
 
-Vim是一款成熟的, 开源免费的, 基于命令行界面的文字编辑器. 可能与大多数编辑器所不同的是, Vim存在"模式", 如编辑模式, 命令模式, 选择模式等.
+Vim是一款成熟的, 开源免费的, 基于命令行界面的文字编辑器. 可能与大多数编辑器所不同的是, Vim存在``模式'', 如编辑模式, 命令模式, 选择模式等.
 在打开Vim时(命令行输入\cverb|vim|), 会进入Vim的命令模式, 此模式下不可直接输入文字, 键盘键入会被处理为命令, 如 \cverb|j|为
 向下翻页, \cverb|k|为向上翻页, \cverb|o|为向下插入新的一行并进入编辑模式, \cverb|i|为在光标前进入编辑模式以插入文字等. 编辑模式的使用
 与通常文本编辑器类似, 而要回到命令模式则按下键盘\cverb|Esc|键即可. 要退出Vim则需要在命令模式中输入\cverb|:q|(冒号和q).
@@ -106,7 +106,7 @@ Vim是一款成熟的, 开源免费的, 基于命令行界面的文字编辑器.
 \begin{enumerate}
       \setcounter{enumi}{-1}
       \item 请确保在Windows下安装了VSCode与WSL, 且在Linux下正确安装了\\GCC, GDB, CMake等软件工具. 为确认软件在Linux下已安装, 可输入\cverb|gcc --version|.
-      \item 在Windows内打开VSCode, 按下快捷键\cverb|Ctrl+Shift+X|或打开{\sffamily{插件\\(Extensions)}}侧边栏, 搜索"WSL"并安装. 请注意这里安装的是VSCode的插件, 和Windows中安装的WSL不同,
+      \item 在Windows内打开VSCode, 按下快捷键\cverb|Ctrl+Shift+X|或打开{\sffamily{插件\\(Extensions)}}侧边栏, 搜索``WSL''并安装. 请注意这里安装的是VSCode的插件, 和Windows中安装的WSL不同,
             二者需要协同工作.
       \item WSL插件安装完成后, VSCode界面最左下角会出现交错相对的箭头图标, 鼠标悬停其上时显示{\sffamily{打开远程窗口(Open a Remote Window)}}.
             点击此处即可在屏幕上方打开WSL对话框, 在对话框中选择{\sffamily{连接到WSL(Connect to WSL)}}. 也可按下\cverb|Ctrl+Shift+P|
