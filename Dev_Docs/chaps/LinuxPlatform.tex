@@ -57,14 +57,15 @@
       \item \cverb|cat|: 用于读取文件内容并输出到命令行中. 可以使用\cverb|cat|来查看文件内容而不会打开或修改文件本身.
       \item \cverb|rm| (ReMove): 用于删除文件/文件夹. \emph{该命令极其危险, Linux系统中删除文件会直接从硬盘中抹除所有数据, 几乎是不可能恢复的, 因此
                   请在任何时候都谨慎使用该命令. }
-            在删除文件夹时, 如文件夹非空则需要使用参数\cverb|-r|来递归地删除所有文件夹下所有内容. 受系统保护的文件
-            将需要使用\cverb|sudo|命令来以系统管理员身份执行, 而参数\cverb|-f|则会无视任何\cverb|rm|命令在执行过程中的报错, 意即强制执行.
-            \emph{因此, \color{red}{请永远不要执行命令}}\cverb|sudo rm -rf /|\emph{, 该命令会以管理员身份删除根目录下的所有目录,
+            在删除空文件夹时需要使用参数\cverb|-d|, 如文件夹非空则需要使用参数\cverb|-r|来递归地删除所有文件夹下所有内容. 受系统保护的文件
+            将需要使用\cverb|sudo|命令来以系统管理员身份执行, 而参数\cverb|-f|则会无视任何\cverb|rm|命令在执行过程中的报错, 意即强制执行. 在Linux中,
+            \cverb|*|通常用作通配符, 可以匹配任何字段.
+            \emph{因此, \color{red}{请永远不要执行命令}}\cverb|sudo rm -rf /*|\emph{, 该命令会以管理员身份删除根目录下的所有内容,
                   也就是抹除掉所有磁盘内的任何数据. 除非你很清楚自己在做些什么. }
 \end{itemize}
 
 \subsubsection{软件安装}
-此处介绍一款软件包管理器：APT(Advanced Package Tool), 其常见于Debian\\系操作系统, 如Ubuntu, Debian等. 其余包管理器如pacman, yum等不在此处介绍.
+此处介绍一款软件包管理器：APT(Advanced Package Tool), 其常见于\\Debian系操作系统, 如Ubuntu, Debian等. 其余包管理器如pacman, yum等不在此处介绍.
 
 启动APT可以在命令行中输入\cverb|apt-get|, 也可缩写为\cverb|apt|. 由于安装软件属于系统层面操作, 在涉及使用\cverb|apt|修改系统, 如安装, 卸载软件/软件包时, 需要使用管理员权限
 启动\cverb|apt| (在\cverb|apt|前添加\cverb|sudo|). 在初次使用\cverb|apt|时, 应首先更新软件源 (\cverb|sudo apt update|)
