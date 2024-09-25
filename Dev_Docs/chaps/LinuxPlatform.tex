@@ -7,8 +7,9 @@
 \begin{enumerate}
       \setcounter{enumi}{-1}
       \item WSL需要安装在Win10或Win11系统中
-      \item 使用Powershell或命令提示符（cmd）, 输入\cverb|wsl --install|, 即可安装默认的Ubuntu发行版.
-      \item 再次启动WSL（命令行中输入\cverb|wsl|或\cverb|ubuntu|）后会提示输入用户名和密码, 此处用户名应仅使用小写字母,
+      \item 使用Powershell或命令提示符（cmd）, 输入\cverb|wsl --install|, 即可安装默认的Ubuntu发行版. 此过程中可能需要您提供若干次管理员权限. 随后您需要
+      重启计算机以完成WSL\-Ubuntu的安装.
+      \item 重启后会自动弹出Ubuntu的窗口(重启后若未启动, 则请于命令行中输入\cverb|wsl|或\cverb|ubuntu|), 此时会提示输入用户名和密码, 此处用户名应仅使用小写字母,
             数字或短横杠(减号), 且使用小写字母开头. 输入密码时密码不会显示于屏幕上, 这是正常的.
       \item 上述账户将成为管理员账户, 在使用\cverb|sudo| (Super User Do)命令时会需要输入前述设置的密码.
       \item 使用命令: \cverb|sudo apt update && sudo apt upgrade|对软件包管理器进行更新和升级, 以免无法正常安装和更新软件.
@@ -112,7 +113,7 @@ Vim是一款成熟的, 开源免费的, 基于命令行界面的文字编辑器.
       \item WSL插件安装完成后, VSCode界面最左下角会出现交错相对的箭头图标, 鼠标悬停其上时显示{\sffamily{打开远程窗口(Open a Remote Window)}}.
             点击此处即可在屏幕上方打开WSL对话框, 在对话框中选择{\sffamily{连接到WSL(Connect to WSL)}}. 也可按下\cverb|Ctrl+Shift+P|
             后在屏幕上方对话框中输入{\sffamily{连接到WSL \\(Connect to WSL)}}. 在等待些许时间后即可连接到WSL, 此时\\VSCode窗口上方与左下角将显示连接到WSL的发行版名称.
-      \item 此步将为WSL上的VSCode安装若干插件. 同第1步中的操作, 安装{\sffamily{C++ Extension Pack}},{\sffamily{CMake}} 两款插件.
+      \item 此步将为WSL上的VSCode安装若干插件. 同第1步中的操作, 安装插件{\sffamily{C++ Extension Pack}}.
 \end{enumerate}
 至此便可完成Linux下的环境配置.
 

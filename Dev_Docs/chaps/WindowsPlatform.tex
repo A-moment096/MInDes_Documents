@@ -9,9 +9,11 @@ Windows平台推荐使用Microsoft Visual Studio (以下称VS) 的最新社区�
     \item VS是一个功能齐全, 体积庞大的IDE, VS本体的下载与安装时间较长, 请耐心等待. 在安装VS前请预留好充足的空间. 安装过程中可能需要您重启计算机.
     \item 点击\bhref{https://visualstudio.microsoft.com/}{\underline{此处}}可打开 VS 官网, 选择下方的下载即可下载VS的安装器.
           请注意, 这一步下载的仅为VS的安装器, 并非VS的本体.
-    \item 在安装好VS的安装器后, 需要根据需要安装组件. 此处请选择安装{\sffamily{社区版(Community)}},
-          此为免费提供使用的版本. 
-    \item 在开发组件中, 选择{\sffamily{C++桌面开发(Desktop Development with C++)}}. 随后的步骤均可默认安装.
+    \item 在安装好VS的安装器后, 双击打开便会先进入一段时间的检查, 请耐心等待. 随后安装器便会打开安装界面.
+    \item 在开发组件中, 请选择{\sffamily{桌面应用和移动应用(Desktop \& Mobile)\textrightarrow{}使用\\C++桌面开发(Desktop Development with C++)}}. 然后
+    请点击右下方的安装.
+    \item 这之后会有一段时间的组件下载和安装的过程, 耗时较长, 请耐心等待.
+    \item 在安装完成后, VS 会要求尽快重启计算机. 请自行重新启动计算机以完成安装.
 \end{enumerate}
 通过上面的步骤, 您将在您的计算机上安装好Microsoft Visual Studio.
 
@@ -20,11 +22,13 @@ Windows平台推荐使用Microsoft Visual Studio (以下称VS) 的最新社区�
 \begin{enumerate}
     \setcounter{enumi}{-1}
     \item 请确保正确安装了VS, 特别是VS的组件, 应包含C++桌面开发的组件.
-    \item 打开VS, 此时VS会弹出一个欢迎窗口, 左侧为历史项目(目前是空的), 右侧有若干选项. 请选择第四项{\sffamily{创建新项目(Create a new project)}}.
+    \item 打开VS, VS会先弹出一个外观配置页面, 请根据自己的喜好选择. 随后VS会弹出一个欢迎窗口, 左侧为历史项目(目前是空的), 右侧有若干选项. 请选择第四项{\sffamily{创建新项目(Create a new project)}}.
     \item VS内置了多种项目模板. 但我们需要一个空项目模板, 因此在右侧选择{\sffamily{空项目(Empty Project)}}, 并点击{\sffamily{下一步}}.
     \item 接下来VS会要求设置新项目的名称, 路径位置等. 请根据自己喜好填写, 并点击右下方{\sffamily{创建(Create)}}.
-    \item 随后便会进入VS的主界面. 现在创建一个新的C++文件. VS中的多种文件统称为{\sffamily{项(item)}}.
-          在{\sffamily{解决方案浏览器(Solution Expolorer)}}中选择{\sffamily{源文件(source)}}文件夹(过滤器)后右键,
+    \item 随后便会进入VS的主界面. 第一次进入可能会弹出一个花里胡哨的 `What's New', 可以直接关掉.
+          现在创建一个新的C++文件. VS中的多种文件统称为{\sffamily{项(item)}}.
+          在{\sffamily{解决方案浏览器(Solution Expolorer)}} (可能在页面右方)
+          中选择{\sffamily{源文件(source)}}文件夹(过滤器)后右键,
           在{\sffamily{添加(Add)}}子菜单中选择{\sffamily{新项(New Item...)}}, 然后再在弹出的对话框中为该文件命名. 现在该文件便会打开在主页面中, 等待编辑.
     \item 编辑该文件使之成为一个可运行的C++代码.下面给出一个简单的C++源文件示例:
 \begin{lcverbatim}
@@ -38,10 +42,13 @@ int main() {
           点选{\sffamily{属性\\(Properties)}}, 此时将弹出项目属性对话框.
     \item 在该对话框左上方的配置中选择{\sffamily{所有配置(All Configuration)}}, 在左侧栏中找到
           配置{\sffamily{配置属性{\textrightarrow}通常(Configuration Properties{\textrightarrow}General)}}, 右侧界面中选择``C++ 语言标准'',
-          更改为{\sffamily{ISO C++ 17 标准(/std:c++17) (ISO C++ 17 Standard(/std:c++17))}}.
+          更改为{\sffamily{ISO C++ 17 标准(/std:c++17) (ISO C++ 17 Standard(/std:c++17))}}, 然后在右下角点击{\sffamily{应用(Apply)}}.
     \item 再在左侧栏中找到{\sffamily{配置属性{\textrightarrow}C/C++{\textrightarrow}语言\\
           (Configuration Properties{\textrightarrow}C/C++{\textrightarrow}Language)}}选项,
-          在右侧的界面中点击{\sffamily{Open MP 支持(Open MP Support)}}一项的右侧, 选择{\sffamily{是(/openmp)\\(Yes(/openmp))}}, 为该项目添加OpenMP的支持.
+          在右侧的界面中点击{\sffamily{Open MP 支持(Open MP Support)}}一项的右侧, 选择{\sffamily{是(/openmp)\\(Yes(/openmp))}}, 为该项目添加OpenMP的支持,
+          然后在右下角点击{\sffamily{应用(Apply)}}. 最后点击右下方的{\sffamily{确定(OK)}}以保存设置并退出该页面.
+    \item 此时, 您可以点击上方的{\sffamily{本地Windows调试器(Local Windows Debugger)}}. 随后控制台(黑框)将会跳出并显示您的程序输出. 该程序应为在屏幕
+          上打印``hello, world! from Visual Studio''. 这便表示您的环境已经配置完成且成功运行.
 \end{enumerate}
 
 至此, 您已为在VS中为开发MInDes所需要的项目属性设置. 请注意, 这些属性设置是仅针对单个项目的, 如有别的新的项目需要类似设置,
@@ -76,15 +83,19 @@ MInDes的具体步骤.
 特别是程序输入文件的编写. 后续在Linux平台的开发也需要依赖VSCode的远程连接和WSL功能. 点击
 \bhref{https://code.visualstudio.com/}{\underline{此处}}可打开 VSCode 官网.
 
-VSCode的安装可以全部选择默认安装, 如此即可使用VSCode的基础功能. VSCode以其丰富的插件生态而闻名, 安装插件可以在侧边栏选择
-或\\\cverb|Ctrl+Shift+X|打开插件市场, 在页面上方框中输入相应关键词即可检索相关插件. 这里推荐若干插件以提高工作效率:
+VSCode在安装时, 请注意在 {\sffamily{Select Additional Tasks}} 中选择 {\sffamily Add ``Open with Code'' action \dots} 的两个选项, 以便
+在安装后可以通过右键打开文件夹和文件. \emph{如果您想要为所有用户安装(比如, 安装到 {\bfseries{C:\textbackslash{}Program Files\textbackslash{}Microsoft VS Code}})
+, 请在下载界面中选择 {\sffamily{}System Installer} (第二个选项)并使用管理员权限安装}. 
+
+VSCode以其丰富的插件生态而闻名, 安装插件可以在侧边栏选择或 
+\cverb|Ctrl+Shift+X| 打开插件市场, 在页面上方框中输入相应关键词即可检索相关插件. 这里推荐若干插件以提高工作效率:
 \begin{itemize}
     \item Chinese (Simplified)(简体中文) Language Pack for Visual Studio Code: 可以使VSCode的语言显示变为中文显示.
     \item WSL: 添加链接WSL的支持以便于从VSCode中打开WSL并进行程序调试
     \item MInDes-LSP: 笔者开发的为MInDes输入文件提供语法支持的VSCode插件. 可以从
           \bhref{https://github.com/A-moment096/MInDes-LSP}{\underline{该Github仓库}}中下载安装. 安装方法为在插件市场
           界面右上侧的三个点处展开菜单, 选择{\sffamily{从VSIX安装(Install from VSIX\dots)}}, 在弹出的对话框中选择下载好的VSIX文件即可.
-    \item C/C++ Extension Pack: 为C或C++语言提供语言支持, 包括语法高亮, 语法纠错, 断点调试等功能.
+    \item C/C++ Extension Pack: 为C或C++语言提供语言支持, 包括语法高亮, 语法纠错, 断点调试等功能, 其中还包含 CMake 插件.
     \item CMake: 提供在VSCode中使用CMakeLists.txt进行程序构筑的支持.
 \end{itemize}
 其中前三个推荐在Windows平台的VSCode中安装, 如果没有在Windows端使用VSCode调试程序的需求, 其余的可以选择只在WSL中安装即可.

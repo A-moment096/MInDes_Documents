@@ -17,7 +17,7 @@ Git从来不复制文件, Git只负责记录仓库内发生了什么变化. 通�
 环境时工作效率极高的原因.
 \subsubsection{Git基础概念}
 除了上一小节所提到的Branch, Merge以外, Git中有一些专有的, 约定俗成的概念, 这里对其一并介绍:
-\begin{enumerate}
+\begin{itemize}
       \item repository(仓库): 指由Git接管的文件夹. Git无法管理一个普通的文件夹, 需要将普通文件夹用Git初始化为仓库后才可以被Git所管理.
       \item stash: 类似于中转站的存储位置. 仓库内的所有的改动并不会立刻被记录, 而是会先存储在stash中. 修改stash中的内容较为简单,
             通过此方法可以让Git只记录用户认为准备妥当的改动, 避免提交内容混乱.
@@ -33,7 +33,7 @@ Git从来不复制文件, Git只负责记录仓库内发生了什么变化. 通�
       \item pull request: 利用Git进行协作的基础即为使用pull request功能. 开发者通过克隆他人的仓库到本地, 经过修改变更后, 可以选择提交到自己的库中, 也可以
             选择将自己的变更提交给被克隆的仓库以供该仓库的原管理员审阅. 这一操作即为pull request. 这一过程类似于代码审核过程, 由原仓库管理员选择性合并他人提交的pull
             request以保证仓库的更新质量.
-\end{enumerate}
+\end{itemize}
 \subsection{GitHub Desktop操作}
 GitHub Desktop是由GitHub组织开发的, 可以方便地与GitHub进行连接并实现push, clone, fetch与pull request等操作, 同时其也兼具Git的基本功能, 适合轻度使用者用来完成基础的
 版本控制与多人协作.
