@@ -71,7 +71,7 @@
     \item 将本地仓库中的如下三个文件:\emph{libfftw3-3.dll, libfftw3f-3.dll, libfftw3l-3.dll}复制到项目文件夹下以便链接器寻找到动态链接库
     (可选地, 自行设置动态链接库的寻址). 至此, Windows端的VS配置就完成了.
     \item 根据官方教程安装WSL, 然后在VSCode中安装对应插件以远程连接至WSL. 在VSCode中安装C++与CMake的插件 (可选地, 安装MInDes-LSP).
-    \item 在WSL中安装GCC, GDB, CMake, \emph{readline}, 用VSCode打开MInDes或\\MInDes\_DEV的本地仓库, 用CMake尝试运行程序.
+    \item 在WSL中安装G++, GDB, CMake, \emph{readline}, 用VSCode打开MInDes或\\MInDes\_DEV的本地仓库, 用CMake尝试运行程序.
     (可选地, 安装fftw3开发用库到本地并修改\emph{CMakeLists.txt}内容以改变fftw库的寻址).
 \end{itemize}
 完成上述步骤, 您应该可以在一台新组装的电脑上搭建开发MInDes的必要环境. 请注意, 上述步骤中每一步均可能遇到程度不等的问题, 请善用搜索引擎. 遇到的任何问题也欢迎

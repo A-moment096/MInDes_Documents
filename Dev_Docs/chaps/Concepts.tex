@@ -4,14 +4,14 @@
 编辑器指文本编辑器, 常见的如微软的记事本工具、Notepad++,
 linux下的Vim、Emacs, 多端通用的 VSCode等；
 
-编译器指将C、C++等程序代码编译为二进制可运行文件的程序, 常见的如随Visual Studio安装而安装的MSVC, linux下默认的GCC,
+编译器指将C、C++等程序代码编译为二进制可运行文件的程序, 常见的如随Visual Studio安装而安装的MSVC, linux下常用的GNU Compiler Collection,
 llvm组织出品的Clang等. 另一个常见的与之更类似的概念为解释器, 其为Python一类解释型语言所使用, 特点是从脚本逐行解释代码内容, 而不似编译器,
 读取整个文件后编译为一个二进制可执行程序.；
 
 IDE 为 Integrated Development Environment的缩写, 即集成开发环境, 可以看作是将编辑器和编译器结合起来的产物.
 著名的Visual Studio即为集成开发环境, 此外还有JetBrains 公司出品的 CLion.
 
-目前, MInDes使用Visual Studio开发Windows端, 使用VSCode + GCC + GDB + CMake的组合开发Linux端程序.
+目前, MInDes使用Visual Studio开发Windows端, 使用VSCode + G++ + GDB + CMake的组合开发Linux端程序.
 
 \subsection{文档(Documentation), API Reference}
 程序开发领域的文档, 一般指帮助用户使用软件的用户手册, 亦或者记录软件功能的记录用手册. 在使用软件的过程中, 遇到的大多数问题都可以通过查询文档解决.
@@ -128,20 +128,36 @@ MInDes 出于兼顾稳定性以及功能性的原因, 选择使用C++17标准进
 从上述过程可知, 没有正确配置运行库环境可导致程序编译过程中产生链接器错误, 例如找不到符号的定义等. 因此开发环境的配置除了工具的设置外, 配置正确的运行
 库也是环境配置的一部分.
 
-\subsection{编译器, MSVC, GCC 与 C++标准委员会}
+\subsection{编译器, MSVC, G++ 与 C++标准委员会}
 前面已经介绍了编译器的作用, 也介绍了C++语言标准. 语言标准由C++标准委员会商议确定, 通过对提案的可行性审查, 必要性审查等来确定标准C++在某个标准下应该
 具有的语法特性. 该特性是推荐所有编译器共同支持的, 但因为各种原因, 部分语法特性并不是被所有编译器所支持的, 且每种不同的编译器也有各自不同的特点.
 编译器可以实现非标准的C++语法特性, 为使用者提供便利, 但应注意使用了某款编译器特性的源代码, 在使用别的编译器时可能出现效率下降, 运行结果不符合预期,
-甚至编译失败等各种问题. 其中, 处于Windows, Linux两大平台垄断地位的编译器, MSVC 与 GCC, 均拥有大量的为适应各自平台而开发的非标准的语法特性. 在跨平台
+甚至编译失败等各种问题. 其中, 处于Windows, Linux两大平台垄断地位的编译器, MSVC 与 G++, 均拥有大量的为适应各自平台而开发的非标准的语法特性. 在跨平台
 编程时, 应尽可能避免使用这类特性, 保持程序在双端都能有相似的表现.
 
 MSVC编译器通常不直接接受编译器选项(flags / Compiler Options), 而是需要在VS中进行设置. 这类内容请查看Microsoft的各类文档, 如关于编译器选项的
 \bhref{https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options?view=msvc-170}{文档}.
 
-GCC是GNU Compiler Collection的缩写, 即GNU编译器套装. 历史上也代表GNU C Compiler以及GNU C \& C++ Compiler的缩写. GCC中与C++有关的组件为g++,
-其可以通过在命令行后添加编译器指令(flags)以控制编译器的行为, 也可以通过各类构筑系统(下文将提到)以控制编译器的行为.
+G++是GNU编译器套装 (GNU Compiler Collection, 简称GCC)中的编译器之一, 负责编译C++程序. 可以通过在命令行中添加编译器指令(flags)以控制编译器的行为,
+也可以通过各类构筑系统(下文将提到)以控制编译器的行为.
+% GCC是GNU Compiler Collection的缩写, 即GNU编译器套装. 历史上也代表GNU C Compiler以及GNU C \& C++ Compiler的缩写. GCC中与C++有关的组件为g++,
+% 其可以通过在命令行后添加编译器指令(flags)以控制编译器的行为, 也可以通过各类构筑系统(下文将提到)以控制编译器的行为.
 
 MSVC编译器的语法与GCC的有很大区别, 但一般不会特意手动设置这些内容.
+
+\subsection{GNU Compiler Collection, GCC \& G++}
+GNU编译器套装(GNU Compiler Collection)可以缩写为GCC, 而GCC本身也是个独立的程序, G++又被包含在GCC中, 这三者的关系较为复杂, 名称有其历史原因,
+在此简要阐述以帮助读者辨别三者的区别.
+
+GCC这个名称最早原意为GNU C Compiler, 即GNU C编译器, 是一款较为知名的C语言编译器, 相对应的还有C++对应的G++, 即GNU C++编译器.
+而随着GNU社区的不断壮大, GNU团队开发的编译器开始不仅限于C语言或者C++等几个语言, 如 Objective\-C, Fortran, Ada等等的编译器. 于是,
+GNU将他们开发出的这些语言的编译器以及这些编译器依赖的库(libstdc++等)合并起来, 并称为GNU Compiler Collection, 并重新将GCC的含义变为该义.
+
+GCC即便含义发生了转变(由编译器到编译器集合), 作为可执行程序的编译器工具链而言, GCC仍然是可用的, 但在编译C++程序时应该使用G++而非GCC. 详细请参阅
+\bhref{https://gcc.gnu.org/onlinedocs/gcc.pdf\#page=25}{Using the GNU Compiler Collection}.
+
+总而言之, 目前提到的GCC应被理解为GNU编译器套装, 可以直接用以编译C语言, 可以兼职编译C++. G++作为GNU编译器套装中的一部分, 是专职编译C++语言的编译器.
+在编译C++程序时应优先尝试用G++进行编译.
 
 \subsection{代码构筑系统, CMake}
 一般的小型程序可以通过编译器简单的处理即可编译为可执行的二进制程序, 但当代码更加复杂, 文件众多且相互关联之时, 有一个辅助进行编译的程序可以有效地提高

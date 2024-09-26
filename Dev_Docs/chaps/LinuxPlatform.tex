@@ -34,10 +34,10 @@
       \item 绝对路径 (Absolute Path): 与相对路径对应, 指计算机中每个文件的唯一地址.
       \item 根目录 (Root Path): 指Linux文件系统最底层一级目录, 所有绝对路径从根目录开始. 根目录用\cverb|/|指代.
       \item 挂载文件夹 (mnt): 该文件夹位于根目录\cverb|/|下. 在Linux中所有的磁盘均被抽象为文件夹存储于mnt中.
-            因此, WSL中若要访问Windows系统中已有文件, 如路径为\\\cverb|D:\Work\MInDes\test.txt|的文件,
-            其在WSL中的路径则为\\\cverb|/mnt/d/work/mindes/test.txt|. 其中, 第一个\cverb|/|即指
+            因此, WSL中若要访问Windows系统中已有文件, 如路径为 \textbf{D:\textbackslash{}Work\textbackslash{}MInDes\textbackslash{}test.txt}
+            的文件, 其在WSL中的路径则为 \textbf{/mnt/d/work/mindes/test.txt}. 其中, 第一个\cverb|/|即指
             根目录. 可以注意到linux系统文件路径不区分大小写.
-      \item 用户文件夹 (User Directory): 指用户相关文件的存储路径, 类似于\\Windows中的\cverb|C:\User|文件夹. 在Linux中,
+      \item 用户文件夹 (User Directory): 指用户相关文件的存储路径, 类似于 Windows 中的 \textbf{C:\textbackslash{}User} 文件夹. 在Linux中,
             常使用\cverb|~|缩写用户文件夹. 一般进入系统时会自动进入用户文件夹中.
 \end{itemize}
 
@@ -72,14 +72,14 @@
 启动\cverb|apt| (在\cverb|apt|前添加\cverb|sudo|). 在初次使用\cverb|apt|时, 应首先更新软件源 (\cverb|sudo apt update|)
 以及更新\cverb|apt|本身 (\cverb|sudo apt upgrade|).
 
-为安装某个软件包, 此处以GCC (Linux下的常用编译器) 为例, 演示如何安装软件包.
+为安装某个软件包, 此处以 G++ (Linux下的常用 C++ 编译器) 为例, 演示如何安装软件包.
 \begin{enumerate}
       \setcounter{enumi}{-1}
       \item 确保\cverb|apt|的软件源与软件本体都得到了更新. 否则很容易因\cverb|apt|记录的软件源太旧, 找不到可用的软件源而安装失败.
-      \item 输入\cverb|sudo apt install gcc|, 系统会要求输入管理员密码. 该密码为安装WSL时所设定的用户与对应的密码. 输入密码时密码不显示在屏幕上是正常现象.
+      \item 输入\cverb|sudo apt install g++|, 系统会要求输入管理员密码. 该密码为安装WSL时所设定的用户与对应的密码. 输入密码时密码不显示在屏幕上是正常现象.
       \item 正确输入密码后系统将弹出软件大小等信息, 并询问是否安装. 输入\cverb|Y|, \cverb|y|或直接回车以进行安装.
-      \item 等待安装完毕后, 输入\cverb|gcc --version|以检查是否安装成功. 如若安装成功则会显示版本信息, 若未安装成功则会显示类似于\\
-            \cverb|-bash: gcc: command not found|的信息.
+      \item 等待安装完毕后, 输入\cverb|g++ --version|以检查是否安装成功. 如若安装成功则会显示版本信息, 若未安装成功则会显示类似于\\
+            \cverb|-bash: g++: command not found|的信息.
 \end{enumerate}
 以上便是使用\cverb|apt|命令安装软件的流程. \cverb|apt|可安装的除了一般意义上的软件外, 还包括运行库等. 值得注意的是, 安装库时名称可能与常用名称不同. 如需要
 查看已安装的软件/库, 可以输入\cverb|apt list --installed|. 这会列出所有已安装的内容. 如要在此基础上检索, 如检索含有字段\cverb|make|的内容, 可以输入命令:
@@ -99,15 +99,15 @@ Vim是一款成熟的, 开源免费的, 基于命令行界面的文字编辑器.
 打开VSCode后连接到WSL(下文将介绍), 或在环境配置结束后(下文将介绍)在命令行中输入\cverb|code|以启动VSCode.
 
 \subsection{配置Linux C++开发环境}
-为实现Linux系统下的C++开发环境配置, 需要安装以下的软件/程序包: GCC, GDB, CMake. 同时为开发MInDes, 还需要安装运行库: \emph{fftw}, \emph{readline}.
+为实现Linux系统下的C++开发环境配置, 需要安装以下的软件/程序包: G++, GDB, CMake. 同时为开发MInDes, 还需要安装运行库: \emph{fftw}, \emph{readline}.
 其中软件的安装直接输入其名称即可, 安装运行库时名称有所不同, 在安装\emph{readline}时请将名称替换为\emph{libreadline-dev}, 其余操作相同. 而\emph{fftw}
 的操作则更加复杂, 涉及自行编译等过程. MInDes程序的GitHub库中已有该运行库, 可以不自行安装. 如您对FFTW感兴趣, 
 希望自行安装在本地, 请参考FFTW组织的介绍: \bhref{https://www.fftw.org/install/linux.html}{FFTW Packages for Linux}
 
-如若采用VSCode + GCC + GDB + CMake的工具链模式进行Linux平台下的程序调试, 请按照如下步骤进行配置:
+如若采用VSCode + G++ + GDB + CMake的工具链模式进行Linux平台下的程序调试, 请按照如下步骤进行配置:
 \begin{enumerate}
       \setcounter{enumi}{-1}
-      \item 请确保在Windows下安装了VSCode与WSL, 且在Linux下正确安装了\\GCC, GDB, CMake等软件工具. 为确认软件在Linux下已安装, 可输入\cverb|gcc --version|.
+      \item 请确保在Windows下安装了VSCode与WSL, 且在Linux下正确安装了\\G++, GDB, CMake等软件工具. 为确认软件在Linux下已安装, 可输入\cverb|g++ --version|.
       \item 在Windows内打开VSCode, 按下快捷键\cverb|Ctrl+Shift+X|或打开{\sffamily{插件\\(Extensions)}}侧边栏, 搜索``WSL''并安装. 请注意这里安装的是VSCode的插件, 和Windows中安装的WSL不同,
             二者需要协同工作.
       \item WSL插件安装完成后, VSCode界面最左下角会出现交错相对的箭头图标, 鼠标悬停其上时显示{\sffamily{打开远程窗口(Open a Remote Window)}}.
@@ -123,20 +123,20 @@ Vim是一款成熟的, 开源免费的, 基于命令行界面的文字编辑器.
 \begin{enumerate}
       \setcounter{enumi}{-1}
       \item 首先请确认自己已经安装好了前述软件.
-      \item 通过命令行在您希望的位置创建一个文件夹, 如在用户文件夹下创建一个名为{\bfseries{test}}的文件夹: \cverb|mkdir ~/test|,
+      \item 通过命令行在您希望的位置创建一个文件夹, 如在用户文件夹下创建一个名为\textbf{test}的文件夹: \cverb|mkdir ~/test|,
             并进入该文件夹(以该例子, \cverb|cd ~/test|).
       \item 用VSCode打开该文件夹: \cverb|code .|, 其中\cverb|.|指代了当前文件夹. VSCode可能会询问是否要信任该文件夹, 请选择信任, 否则插件可能无法正常工作.
       \item 按下快捷键\cverb|Ctrl+Shift+P|后输入并选择{\sffamily{CMake: Quick Start}}, 跟随提示首先输入工程名称(可填test), 随后选择\cverb|C++|,
             \cverb|Executable|, 后续选项可以\cverb|Esc|跳过.
       \item 此时VSCode将自动配置一个基础文件,名为\cverb|main.cpp|, 以及一个对应的CMake配置文件\cverb|CMakeLists.txt|, 且VSCode的CMake插件将调用CMake
-            程序编译该文件, 结果将输出在名为{\bfseries{build}}的文件夹中.
+            程序编译该文件, 结果将输出在名为\textbf{build}的文件夹中.
       \item 在\emph{main.cpp}文件中, 在内容为\cverb|std::cout << "Hello, from test!\n";|的一行的行号(可能是第4行, 可能会有变化)左侧点击,
             将会出现一个红点(断点).
       \item 随后点击VSCode界面最下方一行的一个小虫子图标进入调试环节, 此时界面下方将跳出调试台,  右上角出现有着若干按钮的控制程序运行的小框, 程序将停在断点前.
             切换下方调试台到旁边的终端, 然后在右上角点击暂停的小箭头(或按下键盘快捷键\cverb|F5|, 请注意不是\cverb|F|和\cverb|5|)让程序继续运行.
       \item 程序将运行结束, 在终端处显示输出的结果: \cverb|Hello, from test!|以及一些别的信息.
 \end{enumerate}
-若以上步骤均未出现问题, 说明Linux下以VSCode为宿主的GCC + GDB + CMake工具链已配置成功.
+若以上步骤均未出现问题, 说明Linux下以VSCode为宿主的G++ + GDB + CMake工具链已配置成功.
 
 \subsubsection{Linux C++环境下的MInDes初次运行}
 在您搭建好Linux C++开发环境且测试无误后, 假设您已经通过GitHub等手段获得了MInDes的源代码和相关文件, 便可尝试运行MInDes了. 下面将给出初次试运行的步骤:

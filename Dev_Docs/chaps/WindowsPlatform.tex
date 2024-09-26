@@ -10,7 +10,7 @@ Windows平台推荐使用Microsoft Visual Studio (以下称VS) 的最新社区�
     \item 点击\bhref{https://visualstudio.microsoft.com/}{\underline{此处}}可打开 VS 官网, 选择下方的下载即可下载VS的安装器.
           请注意, 这一步下载的仅为VS的安装器, 并非VS的本体.
     \item 在安装好VS的安装器后, 双击打开便会先进入一段时间的检查, 请耐心等待. 随后安装器便会打开安装界面.
-    \item 在开发组件中, 请选择{\sffamily{桌面应用和移动应用(Desktop \& Mobile)\textrightarrow{}使用\\C++桌面开发(Desktop Development with C++)}}. 然后
+    \item 在开发组件中, 请选择{\sffamily{桌面应用和移动应用(Desktop \& Mobile)\,\textgreater\,使用\\C++桌面开发(Desktop Development with C++)}}. 然后
     请点击右下方的安装.
     \item 这之后会有一段时间的组件下载和安装的过程, 耗时较长, 请耐心等待.
     \item 在安装完成后, VS 会要求尽快重启计算机. 请自行重新启动计算机以完成安装.
@@ -41,10 +41,10 @@ int main() {
     \item 现在修改项目的属性, 首先修改C++的语言标准. 右键单击{\sffamily{解决方案浏览器(Solution Expolorer)}}中与您项目名称相同的一项,
           点选{\sffamily{属性\\(Properties)}}, 此时将弹出项目属性对话框.
     \item 在该对话框左上方的配置中选择{\sffamily{所有配置(All Configuration)}}, 在左侧栏中找到
-          配置{\sffamily{配置属性{\textrightarrow}通常(Configuration Properties{\textrightarrow}General)}}, 右侧界面中选择``C++ 语言标准'',
+          配置{\sffamily{配置属性\,\textgreater\,通常(Configuration Properties\,\textgreater\,General)}}, 右侧界面中选择``C++ 语言标准'',
           更改为{\sffamily{ISO C++ 17 标准(/std:c++17) (ISO C++ 17 Standard(/std:c++17))}}, 然后在右下角点击{\sffamily{应用(Apply)}}.
-    \item 再在左侧栏中找到{\sffamily{配置属性{\textrightarrow}C/C++{\textrightarrow}语言\\
-          (Configuration Properties{\textrightarrow}C/C++{\textrightarrow}Language)}}选项,
+    \item 再在左侧栏中找到{\sffamily{配置属性\,\textgreater\,C/C++\,\textgreater\,语言\\
+          (Configuration Properties\,\textgreater\,C/C++\,\textgreater\,Language)}}选项,
           在右侧的界面中点击{\sffamily{Open MP 支持(Open MP Support)}}一项的右侧, 选择{\sffamily{是(/openmp)\\(Yes(/openmp))}}, 为该项目添加OpenMP的支持,
           然后在右下角点击{\sffamily{应用(Apply)}}. 最后点击右下方的{\sffamily{确定(OK)}}以保存设置并退出该页面.
     \item 此时, 您可以点击上方的{\sffamily{本地Windows调试器(Local Windows Debugger)}}. 随后控制台(黑框)将会跳出并显示您的程序输出. 该程序应为在屏幕
@@ -62,13 +62,18 @@ MInDes的具体步骤.
     \setcounter{enumi}{-1}
     \item 请确保VS已经被正常安装, 且您已知晓如何设置项目属性.
     \item 请打开MInDes源码的文件夹放在一边, 并打开或创建一个空的项目.
-    \item 在VS中, 将解决方案浏览器中的所有过滤器(带有小漏斗的文件夹图标)删除, 并右键项目名称, 选择{\sffamily{添加{\textrightarrow}新过滤器(Add{\textrightarrow}New Filter)}},
-          此时会创建一个新的过滤器, 请将其名称命名为MInDes源码文件夹中的{\bfseries{solvers}}, 或{\bfseries{modules}}.
+    \item 在VS中, 将解决方案浏览器中的所有过滤器(带有小漏斗的文件夹图标)删除, 并右键项目名称, 选择{\sffamily{添加\,\textgreater\,新过滤器(Add\,\textgreater\,New Filter)}},
+          此时会创建一个新的过滤器, 请将其名称命名为MInDes源码文件夹中的\textbf{solvers}, 或\textbf{modules}.
     \item 以上述步骤的类似方式逐步建立多级过滤器, 名称按照源文件的文件夹中所设置的一般.
     \item 在建立好所有过滤器后, 将对应文件夹的内容拖入对应的过滤器上, 即可完成对项目添加源文件.
-    \item 请在源文件夹中找到{\bfseries{lib}}文件夹下的三个文件: \emph{libfftw3-3.dll, libfftw3f-3.dll, libfftw3l-3.dll},
-          将之复制到项目所在的文件夹中. 这一步是为了能让程序编译时能找到这三个运行时库(动态链接库). 请注意, 不是将{\bfseries{lib}}中的文件复制到上一级
-          文件夹中, 而是复制到VS项目所在的文件夹中.
+    \item 请在源文件夹中找到\textbf{lib}文件夹,将之复制到项目所在文件夹中, 然后找到 \textbf{lib/x64} 下的三个文件:
+          \emph{libfftw3-3.dll, libfftw3f-3.dll, libfftw3l-3.dll},
+          将之复制到项目所在的文件夹中. 这一步是为了能让程序编译时能找到这静态链接库以及三个运行时库(动态链接库). 举例而言,
+          假设您的项目文件夹是 \textbf{C:\textbackslash{}Project}, 您的GitHub库中的源文件夹位于\\
+          \textbf{D:\textbackslash{}GitHub\textbackslash{}MInDes\_DEV} 中, 则您需要将
+          \textbf{D:\textbackslash{}GitHub\textbackslash{}MInDes\_DEV\textbackslash{}lib} 文件夹复制到
+          \textbf{C:\textbackslash{}Project} 中, 然后再从 \textbf{C:\textbackslash{}Project\textbackslash{}lib\textbackslash{}x64}
+          中找到文件\emph{libfftw3-3.dll, libfftw3f-3.dll, libfftw3l-3.dll}, 复制到文件夹 \textbf{C:\textbackslash{}Project} 中.
     \item 在完成上述所有步骤后, 您就已经完成了MInDes源文件的添加. 尝试运行该程序. 运行前请勿忘记项目属性的设置, 以免出现不必要的报错.
     \item 点击VS上方工具栏中的绿色实心箭头, 该按钮将启动代码的调试/运行. 由于程序体量较大,
           程序的编译过程可能需要一段时间等待. 开始编译后, 您会在VS的文本编辑器下方看到新的窗口, 此时应该会显示编译过程的信息.
@@ -76,7 +81,19 @@ MInDes的具体步骤.
           则刚刚显示编译过程信息的窗口将显示出现的错误. 请就报错的说明文字和错误代码进行搜索以排查错误.
 \end{enumerate}
 
-至此, MInDes在Windows端VS上的开发环境配置便完成了.
+至此, MInDes在Windows端VS上的开发环境配置便完成了. 此处再列出若干第一次运行时可能出现的问题(描述使用英文, 请对照对应的错误代码):
+\begin{itemize}
+      \item \emph{LNK1104 cannot open file `lib/x64/libfftw3-3.lib'} 表明您没有将静态库正确放置在您的项目文件夹下, 导致链接器找不到静态库而报错. 请
+      检查上述第5步.
+      \item 程序启动, 但弹出窗口{\sffamily{} The code execution cannot proceed because libfftw3-3.dll was not found. Reinstalling the program may fix this problem.}
+      这表明程序在运行时未能找到动态链接库, 导致缺少关键组件而报错. 请重新检查第5步, 将对应动态链接库挪至正确位置.
+      \item \emph{C1128 number of sections exceeded object file format liimit: compile with /bigobj} 表明在调试过程中生成的对象文件(object file)
+      的大小不满足条件, 需要使用 \emph{/bigobj} 的 flag 进行编译. 请打开项目设置页面, 找到{\sffamily{}配置属性\,\textgreater\,C/C++\,\textgreater\,命令行属性页面
+      (Configuration Properties\,\textgreater\,C/C++\,\textgreater\,Command Line)}中的{\sffamily{}附加选项(Additional Options)}, 在其中输入``/bigobj''
+      后点击右下方{\sffamily{}应用(Apply)}保存配置.
+      \item 报了许多错误, 有若干个警告. 请检查警告中是否有 \emph{STL4038 The contents of <filesystem> are availiable only with C++17 or later.} 这条. 如果有, 请
+      参考上文环境配置部分, 正确设置该项目采用的C++语言标准. 请注意, 您可能是仅为某个配置(如, 仅为Debug)设置了这些项目. 您可以考虑将设置应用在所有配置中.
+\end{itemize}
 
 \subsection{开发环境搭建: Microsoft Visual Studio Code}
 除了使用Visual Studio进行Windows端开发外, 建议使用Microsoft旗下的Visual Studio Code (以下简称VSCode)进行文件浏览,
@@ -84,7 +101,7 @@ MInDes的具体步骤.
 \bhref{https://code.visualstudio.com/}{\underline{此处}}可打开 VSCode 官网.
 
 VSCode在安装时, 请注意在 {\sffamily{Select Additional Tasks}} 中选择 {\sffamily Add ``Open with Code'' action \dots} 的两个选项, 以便
-在安装后可以通过右键打开文件夹和文件. \emph{如果您想要为所有用户安装(比如, 安装到 {\bfseries{C:\textbackslash{}Program Files\textbackslash{}Microsoft VS Code}})
+在安装后可以通过右键打开文件夹和文件. \emph{如果您想要为所有用户安装(比如, 安装到 \textbf{C:\textbackslash{Program Files\textbackslash{}Microsoft VS Code}})
 , 请在下载界面中选择 {\sffamily{}System Installer} (第二个选项)并使用管理员权限安装}. 
 
 VSCode以其丰富的插件生态而闻名, 安装插件可以在侧边栏选择或 
